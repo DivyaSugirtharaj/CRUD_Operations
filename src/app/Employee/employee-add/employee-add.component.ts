@@ -53,6 +53,7 @@ export class EmployeeAddComponent {
       this.Employeeservice.CreateEmployee(this.EmployeeForm.value)
       .subscribe((res: any)=>{
         this.SharedService.assignEmployeeeDetails(res);
+        this.EmployeeForm.reset();
       })
     }
   }

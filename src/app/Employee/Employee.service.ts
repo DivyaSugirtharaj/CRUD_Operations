@@ -24,8 +24,8 @@ export class Employeeservice{
 
     UpdateEmployee(employee: any): Observable<Employee> {
         return this.http
-        .post<Employee>(
-            this.apiURL + '/updateEmployeeDetails',employee,
+        .put<Employee>(
+            this.apiURL + '/updateEmployeeDetails/'+ employee.id, employee,
             this.httpOptions
         )
         .pipe(retry(1), catchError(this.handleError));
@@ -43,7 +43,7 @@ export class Employeeservice{
 
     DeleteEmployee(id : number){
         return this.http
-        .get<Employee[]>(
+        .delete<Employee[]>(
             this.apiURL + '/deleteEmployee/'+ id,
             this.httpOptions
         )
